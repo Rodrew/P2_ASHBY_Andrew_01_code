@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 /**
  * Simple brute force implementation
@@ -31,20 +30,19 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(filepath));
                 Scanner scanner = new Scanner(reader);
-                //String line = reader.readLine();
 
-                while (scanner.hasNextLine()) {
+                while (scanner.hasNext()) {
                     String line = scanner.nextLine();
-                    result.put(line, 0);
-                    result.putIfAbsent(line,0);
-                    result.put(line, result.get(line)+1);
-                    //line = reader.readLine();
-                    //System.out.println(" - " + line);
+                    Integer count= result.get(line);
+                    if(count != null){
+                        result.put(line, count+1);
+                    }else{
+                        result.put(line,1);
+                    }
                     }
                 for(Map.Entry<String, Integer> entry: result.entrySet()){
                     System.out.println(" "+ entry.getKey() + ":" + entry.getValue());
                 }
-                //reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

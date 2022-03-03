@@ -12,7 +12,7 @@ public class AnalyticsCounter {
 		FileWriter writer = new FileWriter("result.out");
 
 		result.GetSymptoms();
-
+		writer.write(String.valueOf(result));
 
 		writer.close();
 	}
