@@ -3,9 +3,9 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * Simple brute force implementation
@@ -23,8 +23,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
     }
 
     @Override
-    public Map<String, Integer> GetSymptoms() {
-        Map<String, Integer> result = new HashMap<>();
+    public TreeMap<String, Integer> GetSymptoms() {
+        TreeMap<String, Integer> result = new TreeMap<>();
 
         if (filepath != null) {
             try {
