@@ -23,7 +23,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
     }
 
     @Override
-    public TreeMap<String, Integer> GetSymptoms() {
+    public TreeMap<String, Integer> getSymptoms() {
         TreeMap<String, Integer> result = new TreeMap<>();
 
         if (filepath != null) {
@@ -31,18 +31,18 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
                 BufferedReader reader = new BufferedReader(new FileReader(filepath));
                 Scanner scanner = new Scanner(reader);
 
-                while (scanner.hasNext()) {
-                    String line = scanner.nextLine();
-                    Integer count= result.get(line);
-                    if(count != null){
-                        result.put(line, count+1);
-                    }else{
-                        result.put(line,1);
+                while (scanner.hasNext()) { //lecture du fichier
+                    String line = scanner.nextLine(); //déclaration de la chaine line
+                    Integer count = result.get(line); //
+                    if (count != null) {
+                        result.put(line, count + 1);
+                    } else {
+                        result.put(line, 1);
                     }
-                    }
-                for(Map.Entry<String, Integer> entry: result.entrySet()){
-                    System.out.println(" "+ entry.getKey() + ":" + entry.getValue());
                 }
+                /*for (Map.Entry<String, Integer> entry : result.entrySet()) {
+                    System.out.println(" " + entry.getKey() + ":" + entry.getValue());
+                }*/
             } catch (IOException e) {
                 e.printStackTrace();
             }
