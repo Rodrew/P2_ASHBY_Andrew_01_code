@@ -3,7 +3,6 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -22,27 +21,29 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
         this.filepath = filepath;
     }
 
+    /**
+     * getSymptoms() used to read a file, count the number of occurrences classified by
+     * alphabetical order
+     * @return TreeMap key and value in an alphabetically arranged
+     */
     @Override
     public TreeMap<String, Integer> getSymptoms() {
         TreeMap<String, Integer> result = new TreeMap<>();
 
         if (filepath != null) {
             try {
-                BufferedReader reader = new BufferedReader(new FileReader(filepath));
-                Scanner scanner = new Scanner(reader);
+                BufferedReader readerFile = new BufferedReader(new FileReader(filepath));
+                Scanner scannerFile = new Scanner(readerFile);
 
-                while (scanner.hasNext()) { //lecture du fichier
-                    String line = scanner.nextLine(); //déclaration de la chaine line
-                    Integer count = result.get(line); //
-                    if (count != null) {
-                        result.put(line, count + 1);
+                while (scannerFile.hasNext()) { //lecture du fichier
+                    String line = scannerFile.nextLine();
+                    Integer countValue = result.get(line);
+                    if (countValue != null) {
+                        result.put(line, countValue + 1);
                     } else {
                         result.put(line, 1);
                     }
                 }
-                /*for (Map.Entry<String, Integer> entry : result.entrySet()) {
-                    System.out.println(" " + entry.getKey() + ":" + entry.getValue());
-                }*/
             } catch (IOException e) {
                 e.printStackTrace();
             }
