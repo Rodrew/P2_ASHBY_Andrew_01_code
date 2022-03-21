@@ -1,9 +1,5 @@
 package com.hemebiotech.analytics;
 
-import java.io.FileWriter;
-import java.util.Map;
-
-
 public class AnalyticsCounter {
 
 
@@ -13,15 +9,11 @@ public class AnalyticsCounter {
          * its contents in an alphabetically arranged collection and we write the result in
          * the file:"result.out"
          */
-        ReadSymptomDataFromFile result = new ReadSymptomDataFromFile("symptoms.txt");
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter("result.out");
-            for (Map.Entry<String, Integer> entry : result.getSymptoms().entrySet()) {
-                writer.write(" " + entry.getKey() + ":" + entry.getValue() + "\n");
-            }
-            writer.close(); //fermeture du fichier "result.out"
-        } catch (Exception e) {
+        ReadSymptomDataFromFile reader = new ReadSymptomDataFromFile("symptoms.txt");
+        WriteSymptomDataResultOut writer = new WriteSymptomDataResultOut();
+        try{
+            writer.writeSymptoms(reader.getSymptoms());
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
