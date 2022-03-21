@@ -1,11 +1,14 @@
 package com.hemebiotech.analytics;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
-
+/**
+ * Using the ISymptomReader interface to read the symptoms.txt file and place
+ * its contents in an alphabetically arranged collection and we write the result in
+ * the file:"result.out"
+ */
 public class WriteSymptomDataResultOut{
 
     public WriteSymptomDataResultOut(){
