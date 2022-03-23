@@ -3,6 +3,8 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -27,27 +29,22 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
      * @return TreeMap key and value in an alphabetically arranged
      */
     @Override
-    public TreeMap<String, Integer> getSymptoms() {
-        TreeMap<String, Integer> result = new TreeMap<>();
+    public List<String> getSymptoms() {
+        List<String> listStr = new ArrayList<>();
 
         if (filepath != null) {
             try {
                 BufferedReader readerFile = new BufferedReader(new FileReader(filepath));
                 Scanner scannerFile = new Scanner(readerFile);
 
-                while (scannerFile.hasNext()) { //lecture du fichier
+                while (scannerFile.hasNextLine()) { //lecture du fichier
                     String line = scannerFile.nextLine();
-                    Integer countValue = result.get(line);
-                    if (countValue != null) {
-                        result.put(line, countValue + 1);
-                    } else {
-                        result.put(line, 1);
-                    }
+                    listStr.add(line);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return result;
+        return listStr;
     }
 }
