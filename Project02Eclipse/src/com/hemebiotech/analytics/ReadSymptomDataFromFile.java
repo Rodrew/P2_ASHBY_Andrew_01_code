@@ -24,9 +24,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
     }
 
     /**
-     * getSymptoms() used to read a file, count the number of occurrences classified by
-     * alphabetical order
-     * @return TreeMap key and value in an alphabetically arranged
+     * getSymptoms() used to read a file
+     * @return List String symptoms
      */
     @Override
     public List<String> getSymptoms() {
