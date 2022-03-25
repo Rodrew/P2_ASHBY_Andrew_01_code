@@ -14,9 +14,9 @@ public class AnalyticsCounter {
 
     }
 
-    public TreeMap<String, Integer> countSymptoms (List<String> data) {
-        TreeMap<String, Integer> treeMap = new TreeMap<>();
-        for (String str : data) {//lecture de la list data
+    public TreeMap<String, Integer> countSymptoms (List<String> dataReadFile) {
+        TreeMap<String, Integer> treeMap = new TreeMap<>();//création d'une treemap
+        for (String str : dataReadFile) {//lecture de la list data
             Integer countValue = treeMap.get(str);
             if (treeMap.containsKey(str)) {
                 treeMap.put(str, countValue + 1);//si str présent plusieurs fois incrémente la valeur
