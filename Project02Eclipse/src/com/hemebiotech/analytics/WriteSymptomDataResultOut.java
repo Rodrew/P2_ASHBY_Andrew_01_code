@@ -13,11 +13,17 @@ public class WriteSymptomDataResultOut{
 
     }
 
+    /**
+     * Used to write the result in the file:"result.out"
+     * @param data
+     * @throws IOException
+     */
+
     public void writeSymptoms(TreeMap<String, Integer> data) throws IOException {
 
         FileWriter writer = null;
         try {
-            writer = new FileWriter("result.out");
+            writer = new FileWriter("result.out");//ouverture du fichier "result.out"
             for (Map.Entry<String, Integer> entry : data.entrySet()) {
                 writer.write(" " + entry.getKey() + ":" + entry.getValue() + "\n");
             }
